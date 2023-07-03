@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1 style="color: #333; font-size: 24px; font-weight: bold; margin-bottom: 20px;">Список ваших книг</h1>
+
+  {% if books %}
+    <ul style="list-style: none; padding: 0;">
+      {% for book in books %}
+        <li style="margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+          <a href="{% url 'book_detail' book_id=book.id %}" style="color: #007bff; text-decoration: none;">{{ book.title }}</a><br>
+          <span style="font-size: 14px; color: #666;">Автор: {{ book.author }}</span>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p style="font-size: 16px;">У вас пока нет добавленных книг.</p>
+  {% endif %}
+
+  <a href="{% url 'book_list' %}" style="font-size: 14px; color: #007bff; text-decoration: none; margin-top: 20px;">Вернуться к списку всех книг</a>
+{% endblock %}

@@ -1,0 +1,57 @@
+<!-- book_detail.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="book-detail">
+    <h1 class="book-detail__title">{{ book.title }}</h1>
+    <p class="book-detail__author">Автор: {{ book.author }}</p>
+    <p class="book-detail__description">Описание: {{ book.description }}</p>
+    <p class="book-detail__text">Текст: {{ book.text }}</p>
+
+    {% if book.author.user == request.user %}
+      <p class="book-detail__edit-link"><a href="{% url 'book_edit' book_id=book.id %}">Редактировать</a></p>
+    {% endif %}
+
+    <h2 class="book-detail__comments-heading">Комментарии</h2>
+    <ul class="book-detail__comments-list">
+      {% for comment in book.comments.all %}
+        <li class="book-detail__comment">
+          <span class="book-detail__comment-author">
+            <a href="#">{{ comment.author }}</a>
+          </span>
+          <span class="book-detail__comment-content">{{ comment.content }}</span>
+        </li>
+      {% empty %}
+        <li class="book-detail__comment">Нет комментариев</li>
+      {% endfor %}
+    </ul>
+
+    <h3 class="book-detail__add-comment-heading">Добавить комментарий</h3>
+    <form method="post" class="book-detail__comment-form">
+      {% csrf_token %}
+      <input type="text" name="content" placeholder="Введите комментарий" class="book-detail__comment-input">
+      <button type="submit" class="book-detail__comment-submit-btn">Отправить</button>
+    </form>
+
+    {% if request.user.is_authenticated %}
+      <div class="book-detail__likes">
+        {% if user_liked %}
+          <form method="post">
+            {% csrf_token %}
+            <button type="submit" name="unlike" class="book-detail__like-btn liked">
+              <i class="fas fa-heart"></i> <!-- Иконка сердечка -->
+            </button>
+          </form>
+        {% else %}
+          <form method="post">
+            {% csrf_token %}
+            <button type="submit" name="like" class="book-detail__like-btn">
+              <i class="far fa-heart"></i> <!-- Иконка пустого сердечка -->
+            </button>
+          </form>
+        {% endif %}
+        <p class="book-detail__like-count">Количество лайков: {{ like_count }}</p>
+      </div>
+    {% endif %}
+  </div>
+{% endblock %}

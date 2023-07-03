@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1 style="color: #333; font-size: 36px; font-weight: bold; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);">Добавить книгу</h1>
+  <form method="post" style="max-width: 400px;">
+    {% csrf_token %}
+    <div style="margin-bottom: 20px;">
+      <label for="{{ form.title.id_for_label }}" style="display: block; margin-bottom: 5px; font-size: 18px; font-weight: bold;">{{ form.title.label }}</label>
+      {{ form.title }}
+    </div>
+    <div style="margin-bottom: 20px;">
+      <label for="{{ form.description.id_for_label }}" style="display: block; margin-bottom: 5px; font-size: 18px; font-weight: bold;">{{ form.description.label }}</label>
+      {{ form.description }}
+    </div>
+    <div style="margin-bottom: 20px;">
+      <label for="{{ form.text.id_for_label }}" style="display: block; margin-bottom: 5px; font-size: 18px; font-weight: bold;">{{ form.text.label }}</label>
+      {{ form.text }}
+    </div>
+    <div style="margin-bottom: 20px;">
+      <label for="{{ form.archived.id_for_label }}" style="display: block; margin-bottom: 5px; font-size: 18px; font-weight: bold;">{{ form.archived.label }}</label>
+      {{ form.archived }}
+    </div>
+    <button type="submit" style="background-color: #ff4d4d; color: #fff; padding: 12px 24px; border-radius: 5px; border: none; cursor: pointer; font-size: 18px; font-weight: bold; margin-top: 20px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+      Сохранить
+    </button>
+  </form>
+{% endblock %}

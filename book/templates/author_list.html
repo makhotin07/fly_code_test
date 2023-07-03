@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1 style="color: #333; font-size: 28px; font-weight: bold; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);">Список авторов</h1>
+  <ul style="list-style: none; padding: 0;">
+    {% for author in authors %}
+      <li style="margin-bottom: 20px; border-bottom: 1px solid #ddd; padding-bottom: 10px;">
+        <a href= '#' style="color: #007bff; text-decoration: none; font-size: 20px; transition: color 0.3s;">
+          {{ author.name }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

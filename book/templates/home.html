@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2 style="color: #333; font-size: 28px; font-weight: bold; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);">Добро пожаловать в Мою библиотеку!</h2>
+    <p style="font-size: 18px; margin-bottom: 20px;">Здесь вы можете найти и просматривать книги разных авторов.</p>
+    <p style="font-size: 18px; margin-bottom: 20px;">Авторизуйтесь, чтобы добавлять книги в свою коллекцию.</p>
+    <p style="font-size: 18px; margin-bottom: 40px;">Не зарегистрированы? <a href="{% url 'register' %}" style="color: #007bff; text-decoration: underline;">Зарегистрируйтесь</a> и начните использовать нашу библиотеку.</p>
+    <a href="{% url 'login' %}" style="background-color: #007bff; color: #fff; padding: 12px 24px; border-radius: 5px; border: none; cursor: pointer; font-size: 18px; font-weight: bold; text-decoration: none;">Войти</a>
+{% endblock %}

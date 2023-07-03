@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="add-book-form">
+            <h1 style="color: #333; font-size: 36px; font-weight: bold; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);">Добавить книгу</h1>
+            <form method="post" style="max-width: 400px;">
+                {% csrf_token %}
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <label for="{{ form.title.id_for_label }}" style="display: block; margin-bottom: 5px; font-size: 18px; font-weight: bold;">Название:</label>
+                    {{ form.title }}
+                </div>
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <label for="{{ form.description.id_for_label }}" style="display: block; margin-bottom: 5px; font-size: 18px; font-weight: bold;">Описание:</label>
+                    {{ form.description }}
+                </div>
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <label for="{{ form.text.id_for_label }}" style="display: block; margin-bottom: 5px; font-size: 18px; font-weight: bold;">Текст:</label>
+                    {{ form.text }}
+                </div>
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <label for="{{ form.archived.id_for_label }}" style="display: block; margin-bottom: 5px; font-size: 18px; font-weight: bold;">Архивировано:</label>
+                    {{ form.archived }}
+                </div>
+                <div class="form-actions">
+                    <button type="submit" style="background-color: #ff4d4d; color: #fff; padding: 12px 24px; border-radius: 5px; border: none; cursor: pointer; font-size: 18px; font-weight: bold;">Добавить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
